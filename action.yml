@@ -76,7 +76,7 @@ runs:
         python -m plugintranslations
 
     - name: "Create Pull Request to plugin..."
-      uses: peter-evans/create-pull-request@v7
+      uses: peter-evans/create-pull-request@v8
       with:
         path: 'plugin'
         branch: translations
