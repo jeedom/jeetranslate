@@ -21,7 +21,12 @@ class SourceFile(object):
             self._prompts[text] = Prompt(text)
 
     def search_prompts(self) -> None:
-        content = self._file.read_text(encoding="UTF-8")
+        try:
+            content = self._file.read_text(encoding="UTF-8")
+        except (OSError, UnicodeDecodeError) as e:
+            self._logger.error(f"Cannot read file {self._file.as_posix()}: {e}")
+            return
+
         for txt in re.findall("{{(.*?)}}", content):
             if len(txt) != 0:
                 self._add_prompt(txt)

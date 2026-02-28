@@ -13,11 +13,10 @@ class Translations():
             new_prompt.set_translation(language, new_translation)
             self._translation[text] = new_prompt
         elif not self._translation[text].has_translation(language):
-            # not yet translate, save this one
+            # not yet translated, save this one
             self._translation[text].set_translation(language, new_translation)
         elif self._translation[text].get_translation(language) != new_translation:
-            pass
-            # print(f"2 differents translations for '{text}', keeping first one: '{self._translation[text].get_translation(language)}' <> '{new_translation}'")
+            pass  # we already have a translation for this text and language, but it's different from the new one, we keep the first one and ignore the new one
         else:
             pass  # all fine, we found twice the same text and same translation
 
