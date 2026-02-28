@@ -51,7 +51,7 @@ runs:
       uses: actions/checkout@v6
       with:
         repository: 'jeedom/core'
-        ref: 'alpha'
+        ref: 'master'
         path: 'jeedom_core'
 
     - name: "Setup python 3.12"
