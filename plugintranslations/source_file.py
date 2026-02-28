@@ -13,14 +13,14 @@ class SourceFile(object):
         self._logger = logger
         self._prompts: dict[str, Prompt] = {}
 
-    def get_prompts(self):
+    def get_prompts(self) -> dict[str, Prompt]:
         return self._prompts
 
-    def _add_prompt(self, text: str):
+    def _add_prompt(self, text: str) -> None:
         if text not in self._prompts:
             self._prompts[text] = Prompt(text)
 
-    def search_prompts(self):
+    def search_prompts(self) -> None:
         content = self._file.read_text(encoding="UTF-8")
         for txt in re.findall("{{(.*?)}}", content):
             if len(txt) != 0:

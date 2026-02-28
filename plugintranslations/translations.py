@@ -6,7 +6,7 @@ class Translations():
     def __init__(self) -> None:
         self._translation: dict[str, Prompt] = {}
 
-    def add_translation(self, language, text, new_translation):
+    def add_translation(self, language: str, text: str, new_translation: str) -> None:
         if text not in self._translation:
             # new text, save it with current translation
             new_prompt = Prompt(text)
@@ -21,8 +21,8 @@ class Translations():
         else:
             pass  # all fine, we found twice the same text and same translation
 
-    def __contains__(self, text):
+    def __contains__(self, text: str) -> bool:
         return text in self._translation
 
-    def get_translations(self, text):
+    def get_translations(self, text: str) -> dict[str, str]:
         return self._translation[text].get_translations() if text in self._translation else {}
