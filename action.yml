@@ -1,5 +1,5 @@
 name: Translate Plugin
-Description: 'Action to translate a Jeedom Plugin'
+description: 'Action to translate a Jeedom Plugin'
 
 inputs:
   source_language:
