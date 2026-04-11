@@ -217,7 +217,7 @@ class PluginTranslator():
                     if filename.suffix in FILE_EXTS:
                         absolute_file_path = root/filename
                         jeedom_file_path = absolute_file_path.relative_to(self.__plugin_root)
-                        if self.plugin_id != None
+                        if self.plugin_id != None:
                             jeedom_file_path = (f"plugins/{self.plugin_id}"/jeedom_file_path).as_posix()
                         else:
                             jeedom_file_path = (fjeedom_file_path).as_posix()
