@@ -83,6 +83,7 @@ runs:
         git add core/i18n/*.json plugin_info/info.json
         git diff --staged --quiet || git commit -m "Auto update translation done by jeedom/jeetranslate workflow"
         git push
+      shell: bash
 
 branding:
   icon: 'globe'
