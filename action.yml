@@ -75,19 +75,14 @@ runs:
         export PYTHONPATH=$PYTHONPATH:${{ github.action_path }}
         python -m jeetranslate
 
-    - name: "Create Pull Request to plugin..."
-      uses: peter-evans/create-pull-request@v8
-      with:
-        path: 'plugin'
-        branch: translations
-        delete-branch: true
-        add-paths: |
-          core/i18n/*.json
-          plugin_info/info.json
-        title: "Update translations"
-        assignees: ${{ github.repository_owner }}
-        body: "Automated translations done by [jeedom/jeetranslate workflow](https://github.com/jeedom/jeetranslate)"
-        commit-message: "Auto update translation done by jeedom/jeetranslate workflow"
+    - name: "Push translations to current branch"
+      run: |
+        cd plugin
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add core/i18n/*.json plugin_info/info.json
+        git diff --staged --quiet || git commit -m "Auto update translation done by jeedom/jeetranslate workflow"
+        git push
 
 branding:
   icon: 'globe'
