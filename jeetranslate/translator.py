@@ -82,7 +82,7 @@ class PluginTranslator():
 
     @property
     def plugin_id(self) -> str:
-        return self.__info_json_content['id'] if self.__info_json_content is not None else 'unknown'
+        return self.__info_json_content['id'] if self.__info_json_content is not None else None
 
     def start(self):
         self.get_plugin_translations()
