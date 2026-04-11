@@ -158,6 +158,7 @@ class PluginTranslator():
     def __read_info_json(self):
         if not self.__info_json_file.is_file():
             self.__info_json_content = None
+            return
         try:
             self.__info_json_content = json.loads(self.__info_json_file.read_text(encoding="UTF-8"))
         except (json.JSONDecodeError, UnicodeDecodeError) as e:
