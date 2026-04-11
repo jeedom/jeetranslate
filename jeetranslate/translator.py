@@ -221,7 +221,7 @@ class PluginTranslator():
                         if self.plugin_id != None:
                             jeedom_file_path = (f"plugins/{self.plugin_id}"/jeedom_file_path).as_posix()
                         else:
-                            jeedom_file_path = (fjeedom_file_path).as_posix()
+                            jeedom_file_path = (jeedom_file_path).as_posix()
                         self.__logger.info(f"    {jeedom_file_path}...")
                         self.__files[jeedom_file_path] = SourceFile(absolute_file_path, self.__logger)
                         self.__files[jeedom_file_path].search_prompts()
