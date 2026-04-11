@@ -80,7 +80,8 @@ runs:
         cd plugin
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        git add core/i18n/*.json plugin_info/info.json
+        git add core/i18n/*.json
+        git add plugin_info/info.json 2>/dev/null || true
         git diff --staged --quiet || git commit -m "Auto update translation done by jeedom/jeetranslate workflow"
         git push
       shell: bash
