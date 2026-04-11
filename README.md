@@ -2,7 +2,7 @@
 
 A GitHub action to automatically generate translation files for your plugins and optionally automatically translated texts if all languages you want.
 
-[![pytest](https://github.com/Mips2648/plugins-translations/actions/workflows/pytest.yml/badge.svg)](https://github.com/Mips2648/plugins-translations/actions/workflows/pytest.yml)
+[![pytest](https://github.com/jeedom/jeetranslate/actions/workflows/pytest.yml/badge.svg)](https://github.com/jeedom/pjjetrasnlate/actions/workflows/pytest.yml)
 
 ## How it works
 
@@ -54,7 +54,7 @@ jobs:
   auto-translate:
     runs-on: ubuntu-latest
     steps:
-      - uses: Mips2648/plugins-translations@v2
+      - uses: jeedom/jeetranslate
 ```
 
 Save it and commit in your beta branch.
@@ -79,7 +79,7 @@ jobs:
   auto-translate:
     runs-on: ubuntu-latest
     steps:
-      - uses: Mips2648/plugins-translations@v2
+      - uses: jeedom/jeetranslate
         with:
           deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
           include_empty_translation: false

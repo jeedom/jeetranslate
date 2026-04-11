@@ -1,5 +1,5 @@
-name: Translate Plugin
-description: 'Action to translate a Jeedom Plugin'
+name: Jeetranslate
+description: 'Action to translate a Jeedom Plugin/core/other'
 
 inputs:
   source_language:
@@ -73,7 +73,7 @@ runs:
         debug: ${{ inputs.debug }}
       run: |
         export PYTHONPATH=$PYTHONPATH:${{ github.action_path }}
-        python -m plugintranslations
+        python -m jeetranslate
 
     - name: "Create Pull Request to plugin..."
       uses: peter-evans/create-pull-request@v8
@@ -86,8 +86,8 @@ runs:
           plugin_info/info.json
         title: "Update translations"
         assignees: ${{ github.repository_owner }}
-        body: "Automated translations done by [Mips2648/plugins-translations workflow](https://github.com/Mips2648/plugins-translations)"
-        commit-message: "Auto update translation done by Mips2648/plugins-translations workflow"
+        body: "Automated translations done by [jeedom/jeetranslate workflow](https://github.com/jeedom/jeetranslate)"
+        commit-message: "Auto update translation done by jeedom/jeetranslate workflow"
 
 branding:
   icon: 'globe'
