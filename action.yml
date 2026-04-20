@@ -41,8 +41,8 @@ inputs:
 runs:
   using: "composite"
   steps:
-    # Checks-out plugin repository under $GITHUB_WORKSPACE
-    - name: "Checkout plugin files"
+    # Checks-out project repository under $GITHUB_WORKSPACE
+    - name: "Checkout project files"
       uses: actions/checkout@v6
       with:
         path: 'plugin'
@@ -75,15 +75,23 @@ runs:
         export PYTHONPATH=$PYTHONPATH:${{ github.action_path }}
         python -m jeetranslate
 
+    - name: "Determine files to stage for PR"
+      id: stage_files
+      shell: bash
+      run: |
+        if [ -f plugin/plugin_info/info.json ]; then
+          echo 'add_paths=core/i18n/*.json,plugin_info/info.json' >> $GITHUB_OUTPUT
+        else
+          echo 'add_paths=core/i18n/*.json' >> $GITHUB_OUTPUT
+        fi
+
     - name: "Create Pull Request to plugin..."
       uses: peter-evans/create-pull-request@v8
       with:
         path: 'plugin'
         branch: translations
         delete-branch: true
-        add-paths: |
-          core/i18n/*.json
-          plugin_info/info.json
+        add-paths: ${{ steps.stage_files.outputs.add_paths }}
         title: "Update translations"
         assignees: ${{ github.repository_owner }}
         body: "Automated translations done by [jeedom/jeetranslate workflow](https://github.com/jeedom/jeetranslate)"
