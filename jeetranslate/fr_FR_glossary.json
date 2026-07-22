@@ -1,7 +1,11 @@
 {
+    "de_DE": {
+        "batterie": "batterie"
+    },
     "en_US": {
         "actif": "active",
         "action": "action",
+        "batterie": "battery",
         "commande": "command",
         "mode": "mode",
         "pièce": "room",
