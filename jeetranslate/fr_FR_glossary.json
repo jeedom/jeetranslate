@@ -13,6 +13,8 @@
         "Objet": "Object",
         "pièce": "room",
         "port": "port",
+        "résumés": "summaries",
+        "Résumés": "Summaries",
         "type": "type",
         "vrai": "true"
     },
