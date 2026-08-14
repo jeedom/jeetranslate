@@ -1,6 +1,7 @@
 {
     "de_DE": {
         "batterie": "batterie",
+        "Branches": "Zweige",
         "Objet": "Objekt",
         "Restauration": "Wiederherstellung"
     },
@@ -8,6 +9,8 @@
         "actif": "active",
         "action": "action",
         "batterie": "battery",
+        "Branches": "Branches",
+        "Changelog": "Changelog",
         "commande": "command",
         "mode": "mode",
         "objet": "object",
@@ -21,6 +24,7 @@
         "vrai": "true"
     },
     "es_ES": {
+        "Branches": "Ramas",
         "objet": "objeto",
         "Objet": "Objeto"
     }
