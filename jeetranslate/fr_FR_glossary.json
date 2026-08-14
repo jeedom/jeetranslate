@@ -1,7 +1,8 @@
 {
     "de_DE": {
         "batterie": "batterie",
-        "Objet": "Objekt"
+        "Objet": "Objekt",
+        "Restauration": "Wiederherstellung"
     },
     "en_US": {
         "actif": "active",
@@ -13,6 +14,7 @@
         "Objet": "Object",
         "pièce": "room",
         "port": "port",
+        "Restauration": "Restoration",
         "résumés": "summaries",
         "Résumés": "Summaries",
         "type": "type",
