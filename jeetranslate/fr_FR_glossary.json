@@ -1,6 +1,7 @@
 {
     "de_DE": {
-        "batterie": "batterie"
+        "batterie": "batterie",
+        "Objet": "Objekt"
     },
     "en_US": {
         "actif": "active",
@@ -8,9 +9,15 @@
         "batterie": "battery",
         "commande": "command",
         "mode": "mode",
+        "objet": "object",
+        "Objet": "Object",
         "pièce": "room",
         "port": "port",
         "type": "type",
         "vrai": "true"
+    },
+    "es_ES": {
+        "objet": "objeto",
+        "Objet": "Objeto"
     }
 }
