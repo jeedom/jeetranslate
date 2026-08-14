@@ -1,7 +1,8 @@
 {
     "de_DE": {
-        "batterie": "batterie",
+        "batterie": "Batterie",
         "Branches": "Zweige",
+        "dépôt": "Repository",
         "Objet": "Objekt",
         "Restauration": "Wiederherstellung"
     },
@@ -12,6 +13,7 @@
         "Branches": "Branches",
         "Changelog": "Changelog",
         "commande": "command",
+        "dépôt": "repository",
         "mode": "mode",
         "objet": "object",
         "Objet": "Object",
@@ -25,6 +27,7 @@
     },
     "es_ES": {
         "Branches": "Ramas",
+        "dépôt": "repositorio",
         "objet": "objeto",
         "Objet": "Objeto"
     }
