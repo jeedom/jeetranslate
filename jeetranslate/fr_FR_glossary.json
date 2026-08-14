@@ -3,6 +3,7 @@
         "batterie": "Batterie",
         "Branches": "Zweige",
         "dépôt": "Repository",
+        "dossier": "Ordner",
         "Objet": "Objekt",
         "Restauration": "Wiederherstellung"
     },
@@ -14,6 +15,7 @@
         "Changelog": "Changelog",
         "commande": "command",
         "dépôt": "repository",
+        "dossier": "folder",
         "mode": "mode",
         "objet": "object",
         "Objet": "Object",
@@ -28,6 +30,7 @@
     "es_ES": {
         "Branches": "Ramas",
         "dépôt": "repositorio",
+        "dossier": "carpeta",
         "objet": "objeto",
         "Objet": "Objeto"
     }
