@@ -293,31 +293,52 @@ class PluginTranslator():
 
         if 'description' not in self.__info_json_content:
             self.__logger.warning("You should add a 'Description' in info.json, see https://doc.jeedom.com/fr_FR/dev/structure_info_json")
+        else:
+            translated = self.__translate_localized_field(self.__info_json_content['description'], "Description")
+            if translated is not None:
+                self.__info_json_content['description'] = translated
+
+        self.__translate_special_attributes()
+
+    def __translate_special_attributes(self):
+        special_attributes = self.__info_json_content.get('specialAttributes')
+        if not isinstance(special_attributes, dict):
             return
-        descriptions = self.__info_json_content['description']
-        if not isinstance(descriptions, dict):
-            descriptions = {self.__source_language: descriptions}
+
+        for group_name, group in special_attributes.items():
+            if not isinstance(group, dict):
+                continue
+            for attribute_key, attribute_config in group.items():
+                if not isinstance(attribute_config, dict) or not isinstance(attribute_config.get('name'), dict):
+                    continue
+                label = f"specialAttributes.{group_name}.{attribute_key}.name"
+                translated = self.__translate_localized_field(attribute_config['name'], label)
+                if translated is not None:
+                    attribute_config['name'] = translated
+
+    def __translate_localized_field(self, value, label: str) -> dict | None:
+        texts = value if isinstance(value, dict) else {self.__source_language: value}
 
         allowed_languages = set([self.__source_language] + self.__target_languages)
-        descriptions = {
-            language: description
-            for language, description in descriptions.items()
+        texts = {
+            language: text
+            for language, text in texts.items()
             if language in allowed_languages
         }
 
-        if self.__source_language not in descriptions:
-            self.__logger.warning(f"You should have a 'Description' in info.json that matches your source language: {self.__source_language}")
-            return
-        source_desc = descriptions[self.__source_language]
+        if self.__source_language not in texts:
+            self.__logger.warning(f"You should have a '{label}' in info.json that matches your source language: {self.__source_language}")
+            return None
+        source_text = texts[self.__source_language]
 
         for target_language in self.__target_languages:
-            if target_language in descriptions and descriptions[target_language] != '':
-                self.__logger.info(f"Description for {target_language} already translated, skipping")
+            if target_language in texts and texts[target_language] != '':
+                self.__logger.info(f"{label} for {target_language} already translated, skipping")
                 continue
-            self.__logger.info(f"Translating info.json description to {target_language}")
-            descriptions[target_language] = self.translate_with_deepl(source_desc, target_language)
+            self.__logger.info(f"Translating info.json {label} to {target_language}")
+            texts[target_language] = self.translate_with_deepl(source_text, target_language)
 
-        self.__info_json_content['description'] = descriptions
+        return texts
 
     @Throttle(seconds=0.5)
     def translate_with_deepl(self, text: str, target_language: str) -> str:
