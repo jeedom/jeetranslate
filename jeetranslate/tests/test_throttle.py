@@ -1,9 +1,13 @@
 import time
 import pytest
-from plugintranslations.throttle import Throttle
+from jeetranslate.throttle import Throttle
 
 
 class TestThrottle():
+
+    def test_invalid_max_retries(self):
+        with pytest.raises(ValueError, match="max_retries must be >= 1"):
+            Throttle(max_retries=0)
 
     def test_call(self):
 
